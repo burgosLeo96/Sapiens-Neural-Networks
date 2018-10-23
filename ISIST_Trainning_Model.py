@@ -12,7 +12,7 @@ import pickle
 
 
 # Load the sample data set and split into x and y data frames 
-dataset = pd.read_csv("resources/data/entradaISIST.csv", sep=';', encoding='latin-1')
+dataset = pd.read_csv("resources\data\entradaISIST.csv", sep=';', encoding='latin-1')
 x = dataset.iloc[:,0:16].values
 y = dataset.iloc[:,16].values
 #Splitting the dataset into the Training set and Test set
@@ -52,5 +52,5 @@ classifier.fit(x_train,y_train,batch_size = 10, nb_epoch = 100)
 results = classifier.evaluate(x_test,y_test, verbose= 0)
 print(results)
 
-classifier.save("resources/models/ISIST_Model.h5")
+classifier.save("resources\models\ISIST_Model.h5")
 

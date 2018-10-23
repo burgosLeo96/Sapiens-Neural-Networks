@@ -20,7 +20,8 @@ app = Flask(__name__)
 
 global model
 global graph
-	
+global COMPARATOR
+COMPARATOR = 0.5	
 
 
 
@@ -36,22 +37,27 @@ def predictISIST():
     params = json.load(open('resources/testing/Estudiantes_ISIST.json'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
+    studentsID= StudentsFrame.iloc[:,16]
 
     with open('resources/trainning/x_train_ISIST.pickle', 'rb') as f:
         x_train = pickle.load(f)
         sc = StandardScaler()
         x_train = sc.fit_transform(x_train)
         studentsTable  = sc.transform(studentsTable)
+   ## with graph.as_default():
+    y_pred = model.predict(studentsTable,).reshape(studentsID.size,) 
+    tabla = pd.DataFrame(data={'Student': studentsID, 'Predictions': y_pred}) 
     
-    with graph.as_default():
-        data["prediction"] = str(model.predict( studentsTable))
-        data["success"] = True
+    
+   ## 
+   ##     data["prediction"] = str(model.predict( studentsTable))
+    ##    data["success"] = True
         
     #print(StudentsFrame.to_string())
     #response = {'greeting': 'Hello, ' }
     #return jsonify(response)
     k.clear_session()
-    return jsonify(data)  
+    return tabla.to_json()
 
 
 @app.route("/predict/ICVL", methods = ["POST"])
@@ -62,22 +68,21 @@ def predictICVL():
     params = json.load(open('resources/testing/Estudiantes_ICVL.json'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
-
+    studentsID= StudentsFrame.iloc[:,16]
     with open('resources/trainning/x_train_ICVL.pickle', 'rb') as f:
         x_train = pickle.load(f)
         sc = StandardScaler()
         x_train = sc.fit_transform(x_train)
         studentsTable  = sc.transform(studentsTable)
     
-    with graph.as_default():
-        data["prediction"] = str(model.predict( studentsTable))
-        data["success"] = True
+    y_pred = model.predict(studentsTable,).reshape(studentsID.size,) 
+    tabla = pd.DataFrame(data={'Student': studentsID, 'Predictions': y_pred}) 
         
     #print(StudentsFrame.to_string())
     #response = {'greeting': 'Hello, ' }
     #return jsonify(response)
     k.clear_session()
-    return jsonify(data) 
+    return tabla.to_json()
 
 @app.route("/predict/IELEC", methods = ["POST"])
 def predictIELEC():
@@ -90,22 +95,21 @@ def predictIELEC():
     params = json.load(open('resources/testing/Estudiantes_IELEC.json'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:13]
-
+    studentsID= StudentsFrame.iloc[:,13]
     with open('resources/trainning/x_train_IELEC.pickle', 'rb') as f:
         x_train = pickle.load(f)
         sc = StandardScaler()
         x_train = sc.fit_transform(x_train)
         studentsTable  = sc.transform(studentsTable)
     
-    with graph.as_default():
-        data["prediction"] = str(model.predict( studentsTable))
-        data["success"] = True
+    y_pred = model.predict(studentsTable,).reshape(studentsID.size,) 
+    tabla = pd.DataFrame(data={'Student': studentsID, 'Predictions': y_pred}) 
         
     #print(StudentsFrame.to_string())
     #response = {'greeting': 'Hello, ' }
     #return jsonify(response)
     k.clear_session()
-    return jsonify(data) 
+    return tabla.to_json()
 
 @app.route("/predict/IIND", methods = ["POST"])
 def predictIIND():
@@ -116,22 +120,29 @@ def predictIIND():
     params = json.load(open('resources/testing/Estudiantes_IIND.json'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
-
+    studentsID= StudentsFrame.iloc[:,16]
     with open('resources/trainning/x_train_IIND.pickle', 'rb') as f:
         x_train = pickle.load(f)
         sc = StandardScaler()
         x_train = sc.fit_transform(x_train)
         studentsTable  = sc.transform(studentsTable)
-    
-    with graph.as_default():
-        data["prediction"] = str(model.predict( studentsTable))
-        data["success"] = True
+
+   # y_pred = 
+    #tabla = pd.DataFrame(data={'Student': studentsID, 'Predictions': y_pred}) 
+    StudentsFrame["Prediccion"] = model.predict(studentsTable)
+
+   ## for index, row in  StudentsFrame.iterrows():
+    #    if row["Prediccion"] < COMPARATOR:
+       #     pass:
+    #    else:
+       #     pass
+#
         
     #print(StudentsFrame.to_string())
     #response = {'greeting': 'Hello, ' }
     #return jsonify(response)
     k.clear_session()
-    return jsonify(data) 
+    return StudentsFrame.to_json()
 
 
 if __name__ == '__main__':
