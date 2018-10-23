@@ -12,12 +12,12 @@ import pickle
 
 
 # Load the sample data set and split into x and y data frames 
-dataset = pd.read_csv("/resources/data/entradaIELEC.csv", sep=';', encoding='latin-1')
+dataset = pd.read_csv("resources/data/entradaIELEC.csv", sep=';', encoding='latin-1')
 x = dataset.iloc[:,0:13].values;
 y = dataset.iloc[:,13].values;
 #Splitting the dataset into the Training set and Test set
 x_train, x_test, y_train,y_test = train_test_split(x,y, test_size = 0.25, random_state =0 )
-with open('/resources/trainning/x_train_IELEC.pickle', 'wb') as f:
+with open('resources/trainning/x_train_IELEC.pickle', 'wb') as f:
     pickle.dump(x_train,f)
 sc = StandardScaler()
 x_train = sc.fit_transform(x_train)
@@ -50,5 +50,5 @@ classifier.fit(x_train,y_train,batch_size = 10, nb_epoch = 100)
 results = classifier.evaluate(x_test,y_test, verbose= 0)
 print(results)
 
-classifier.save("/resources/models/IELEC_Model.h5")
+classifier.save("resources/models/IELEC_Model.h5")
 
