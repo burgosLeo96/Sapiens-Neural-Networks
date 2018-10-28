@@ -46,10 +46,13 @@ def predictISIST():
     model = load_model('resources/models/ISIST_Model.h5')
 
     data = {"success": False}
-    params = json.load(open('resources/testing/Estudiantes_ISIST.json'),object_pairs_hook=OrderedDict)
+    if request.headers['Content-Type'] != 'application/json':
+         return "415 Unsupported Media Type "
+
+    params = json.loads( request.data,object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
-    studentsID= StudentsFrame.iloc[:,16]
+    
 
     with open('resources/trainning/x_train_ISIST.pickle', 'rb') as f:
         x_train = pickle.load(f)
@@ -153,8 +156,10 @@ def predictISIST():
 def predictICVL():
     model = load_model('resources/models/ICVL_Model.h5')
     data = {"success": False}
-    
-    params = json.load(open('resources/testing/Estudiantes_ICVL.json'),object_pairs_hook=OrderedDict)
+    if request.headers['Content-Type'] != 'application/json':
+         return "415 Unsupported Media Type "
+
+    params = json.loads( request.data,object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
     with open('resources/trainning/x_train_ICVL.pickle', 'rb') as f:
@@ -277,10 +282,13 @@ def predictICVL():
 def predictIELEC():
     model = load_model('resources/models/IELEC_Model.h5')
     data = {"success": False}
-    params = json.load(open('resources/testing/Estudiantes_IELEC.json'),object_pairs_hook=OrderedDict)
+    
+    if request.headers['Content-Type'] != 'application/json':
+         return "415 Unsupported Media Type "
+
+    params = json.loads( request.data,object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:13]
-    studentsID= StudentsFrame.iloc[:,13]
     with open('resources/trainning/x_train_IELEC.pickle', 'rb') as f:
         x_train = pickle.load(f)
         sc = StandardScaler()
@@ -403,7 +411,10 @@ def predictIIND():
     
     model = load_model('resources/models/IIND_Model.h5')
     data = {"success": False}
-    params = json.load(open('resources/testing/Estudiantes_IIND.json'),object_pairs_hook=OrderedDict)
+    if request.headers['Content-Type'] != 'application/json':
+         return "415 Unsupported Media Type "
+
+    params = json.loads( request.data,object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
     with open('resources/trainning/x_train_IIND.pickle', 'rb') as f:
