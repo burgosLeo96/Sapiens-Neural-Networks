@@ -53,7 +53,7 @@ def predictISIST():
     if request.headers['Content-Type'] != 'application/json':
          return "415 Unsupported Media Type "
 
-    params = json.loads( request.data,object_pairs_hook=OrderedDict)
+    params = json.loads( request.data.decode('utf-8'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
     
@@ -163,7 +163,7 @@ def predictICVL():
     if request.headers['Content-Type'] != 'application/json':
          return "415 Unsupported Media Type "
 
-    params = json.loads( request.data,object_pairs_hook=OrderedDict)
+    params = json.loads( request.data.decode('utf-8'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
     with open('resources/trainning/x_train_ICVL.pickle', 'rb') as f:
@@ -290,7 +290,7 @@ def predictIELEC():
     if request.headers['Content-Type'] != 'application/json':
          return "415 Unsupported Media Type "
 
-    params = json.loads( request.data,object_pairs_hook=OrderedDict)
+    params = json.loads( request.data.decode('utf-8'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:13]
     with open('resources/trainning/x_train_IELEC.pickle', 'rb') as f:
@@ -418,7 +418,7 @@ def predictIIND():
     if request.headers['Content-Type'] != 'application/json':
          return "415 Unsupported Media Type "
 
-    params = json.loads( request.data,object_pairs_hook=OrderedDict)
+    params = json.loads( request.data.decode('utf-8'),object_pairs_hook=OrderedDict)
     StudentsFrame = pd.DataFrame.from_dict(params)
     studentsTable = StudentsFrame.iloc[:,0:16]
     with open('resources/trainning/x_train_IIND.pickle', 'rb') as f:
