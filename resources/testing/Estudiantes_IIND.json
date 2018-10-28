@@ -2,7 +2,7 @@
 
     "Calif Global": "325",
     "Puntaje Lectura Critica": "60",
-    "Puntaje Matematica": "66",
+    "Puntaje Matematica": "46",
     "Promedio Ciclo lectivo 1": "4",
     "Total Creditos Cursados 1": "16",
     "Total Creditos Aprobados 1": "16",
@@ -10,33 +10,33 @@
     "Promedio Ciclo lectivo 2": "3.5",
     "Total Creditos Cursados 2": "36",
     "Total Creditos Aprobados 2": "36",
-    "Promedio Ponderado Acumulado 2": "3.7",
+    "Promedio Ponderado Acumulado 2": "4.5",
     "tasa_aprobacion": "1",
     "Sexo = M": "0",
     "Sexo = F": "1",
     "Benef. Beca = Y": "0",
     "Benef. Beca = N": "1",
-    "ID": "20108864"
+    "ID": "20"
 
 }, {
 
     "Calif Global": "348",
     "Puntaje Lectura Critica": "67",
-    "Puntaje Matematica": "75",
-    "Promedio Ciclo lectivo 1": "0",
-    "Total Creditos Cursados 1": "0",
-    "Total Creditos Aprobados 1": "0",
-    "Promedio Ponderado Acumulado 1": "0",
+    "Puntaje Matematica": "30",
+    "Promedio Ciclo lectivo 1": "2.6",
+    "Total Creditos Cursados 1": "19",
+    "Total Creditos Aprobados 1": "14",
+    "Promedio Ponderado Acumulado 1": "2.6",
     "Promedio Ciclo lectivo 2": "3.6",
-    "Total Creditos Cursados 2": "19",
-    "Total Creditos Aprobados 2": "17",
-    "Promedio Ponderado Acumulado 2": "3.6",
-    "tasa_aprobacion": "0.9",
+    "Total Creditos Cursados 2": "36",
+    "Total Creditos Aprobados 2": "32",
+    "Promedio Ponderado Acumulado 2": "3.3",
+    "tasa_aprobacion": "0.4",
     "Sexo = M": "0",
     "Sexo = F": "1",
     "Benef. Beca = Y": "0",
     "Benef. Beca = N": "1",
-    "ID": "20108864"
+    "ID": "30"
 
 }, {
 
@@ -57,6 +57,6 @@
     "Sexo = F": "0",
     "Benef. Beca = Y": "1",
     "Benef. Beca = N": "0",
-    "ID": "20108864"
+    "ID": "40"
 
 }]
