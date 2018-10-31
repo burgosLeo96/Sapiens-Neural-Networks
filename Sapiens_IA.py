@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 global model
 global COMPARATOR
-COMPARATOR = 0.58
+COMPARATOR = 1.0
 global PRUEBA_ACADEMICA
 PRUEBA_ACADEMICA = 3.3
 global MIN_ICFES_MATEMATICAS_IND
@@ -66,7 +66,7 @@ def predictISIST():
 
     StudentsFrame["Prediccion"] = model.predict(studentsTable)
 
-    Response = [];
+    Response = []
 
 
     for i in StudentsFrame.index:
@@ -85,7 +85,7 @@ def predictISIST():
             promedio_primer_semestre = float(StudentsFrame.loc[i,'Promedio Ponderado Acumulado 1'])
             promedio_segundo_semestre = float(StudentsFrame.loc [i,'Promedio Ponderado Acumulado 2']) 
             #Para saber si es de primer semestre académico
-            if promedio_segundo_semestre ==  0 :
+            if float(StudentsFrame.loc[i, 'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']) == float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']):
                 if promedio_primer_semestre  <= ( PRUEBA_ACADEMICA  + 0.2) and  promedio_primer_semestre > PRUEBA_ACADEMICA:
                     data = { 
                     'status': 200,
@@ -174,7 +174,7 @@ def predictICVL():
     
     StudentsFrame["Prediccion"] = model.predict(studentsTable)
 
-    Response = [];
+    Response = []
 
 
     for i in StudentsFrame.index:
@@ -193,7 +193,7 @@ def predictICVL():
             promedio_primer_semestre = float(StudentsFrame.loc[i,'Promedio Ponderado Acumulado 1'])
             promedio_segundo_semestre = float(StudentsFrame.loc [i,'Promedio Ponderado Acumulado 2']) 
             #Para saber si es de primer semestre académico
-            if promedio_segundo_semestre ==  0 :
+            if float(StudentsFrame.loc[i, 'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']) == float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']):
                 if promedio_primer_semestre  <= ( PRUEBA_ACADEMICA  + 0.2) and  promedio_primer_semestre > PRUEBA_ACADEMICA:
                     data = { 
                     'status': 200,
@@ -259,7 +259,7 @@ def predictICVL():
                         }
                         Response.append(data)
                     #Baja inscripción de créditos
-                    if float(StudentsFrame.loc[i,'Total Creditos Cursados 2']) < MIN_INSCRIPCION_CREDITOS:
+                    if float(StudentsFrame.loc[i, 'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']) < MIN_INSCRIPCION_CREDITOS:
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
@@ -301,7 +301,7 @@ def predictIELEC():
 
     StudentsFrame["Prediccion"] = model.predict(studentsTable)
 
-    Response = [];
+    Response = []
 
 
     for i in StudentsFrame.index:
@@ -320,7 +320,7 @@ def predictIELEC():
             promedio_primer_semestre = float(StudentsFrame.loc[i,'Promedio Ponderado Acumulado 1'])
             promedio_segundo_semestre = float(StudentsFrame.loc [i,'Promedio Ponderado Acumulado 2']) 
             #Para saber si es de primer semestre académico
-            if promedio_segundo_semestre ==  0 :
+            if float(StudentsFrame.loc[i, 'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']) == float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']):
                 if promedio_primer_semestre  <= ( PRUEBA_ACADEMICA  + 0.2) and  promedio_primer_semestre > PRUEBA_ACADEMICA:
                     data = { 
                     'status': 200,
@@ -386,7 +386,7 @@ def predictIELEC():
                         }
                         Response.append(data)
                     #Baja inscripción de créditos
-                    if float(StudentsFrame.loc[i,'Total Creditos Cursados 2']) < MIN_INSCRIPCION_CREDITOS:
+                    if float(StudentsFrame.loc[i,'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i,'Total Creditos Cursados 1']) < MIN_INSCRIPCION_CREDITOS:
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
@@ -429,7 +429,7 @@ def predictIIND():
 
     StudentsFrame["Prediccion"] = model.predict(studentsTable)
 
-    Response = [];
+    Response = []
 
 
     for i in StudentsFrame.index:
@@ -437,7 +437,7 @@ def predictIIND():
         if StudentsFrame.loc [i,'Prediccion'] < COMPARATOR :
             
             #Desempeño bajo en la carrera
-            if float(StudentsFrame.loc[i,'tasa_aprobacion']) < TASA_APROBACION:
+            if float(StudentsFrame.loc[i,'tasa_aprobacion'])  < TASA_APROBACION:
                 data = { 
                 'status': 200,
                 'id': StudentsFrame.loc[i,'ID'],
@@ -448,7 +448,7 @@ def predictIIND():
             promedio_primer_semestre = float(StudentsFrame.loc[i,'Promedio Ponderado Acumulado 1'])
             promedio_segundo_semestre = float(StudentsFrame.loc [i,'Promedio Ponderado Acumulado 2']) 
             #Para saber si es de primer semestre académico
-            if promedio_segundo_semestre ==  0 :
+            if float(StudentsFrame.loc[i, 'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']) == float(StudentsFrame.loc[i, 'Total Creditos Cursados 1']):
                 if promedio_primer_semestre  <= ( PRUEBA_ACADEMICA  + 0.2) and  promedio_primer_semestre > PRUEBA_ACADEMICA:
                     data = { 
                     'status': 200,
@@ -514,7 +514,7 @@ def predictIIND():
                         }
                         Response.append(data)
                     #Baja inscripción de créditos
-                    if float(StudentsFrame.loc[i,'Total Creditos Cursados 2']) < MIN_INSCRIPCION_CREDITOS:
+                    if float(StudentsFrame.loc[i,'Total Creditos Cursados 2']) + float(StudentsFrame.loc[i,'Total Creditos Cursados 1']) < MIN_INSCRIPCION_CREDITOS:
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
