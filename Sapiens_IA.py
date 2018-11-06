@@ -98,7 +98,7 @@ def predictISIST():
                     data = { 
                     'status': 200,
                     'id': StudentsFrame.loc[i,'ID'],
-                    'factor': 'Primera prueba academica',
+                    'factor': 'Primera prueba académica',
                     'generador': 'Sistema'
                     }
                     Response.append(data)
@@ -120,7 +120,7 @@ def predictISIST():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Segunda prueba academica',
+                        'factor': 'Segunda prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -138,7 +138,7 @@ def predictISIST():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Primera prueba academica',
+                        'factor': 'Primera prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -206,7 +206,7 @@ def predictICVL():
                     data = { 
                     'status': 200,
                     'id': StudentsFrame.loc[i,'ID'],
-                    'factor': 'Primera prueba academica',
+                    'factor': 'Primera prueba académica',
                     'generador': 'Sistema'
                     }
                     Response.append(data)
@@ -236,7 +236,7 @@ def predictICVL():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Segunda prueba academica',
+                        'factor': 'Segunda prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -254,7 +254,7 @@ def predictICVL():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Primera prueba academica',
+                        'factor': 'Primera prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -333,7 +333,7 @@ def predictIELEC():
                     data = { 
                     'status': 200,
                     'id': StudentsFrame.loc[i,'ID'],
-                    'factor': 'Primera prueba academica',
+                    'factor': 'Primera prueba académica',
                     'generador': 'Sistema'
                     }
                     Response.append(data)
@@ -363,7 +363,7 @@ def predictIELEC():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Segunda prueba academica',
+                        'factor': 'Segunda prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -381,7 +381,7 @@ def predictIELEC():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Primera prueba academica',
+                        'factor': 'Primera prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -461,7 +461,7 @@ def predictIIND():
                     data = { 
                     'status': 200,
                     'id': StudentsFrame.loc[i,'ID'],
-                    'factor': 'Primera prueba academica',
+                    'factor': 'Primera prueba académica',
                     'generador': 'Sistema'
                     }
                     Response.append(data)
@@ -491,7 +491,7 @@ def predictIIND():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Segunda prueba academica',
+                        'factor': 'Segunda prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
@@ -509,7 +509,7 @@ def predictIIND():
                         data = { 
                         'status': 200,
                         'id': StudentsFrame.loc[i,'ID'],
-                        'factor': 'Primera prueba academica',
+                        'factor': 'Primera prueba académica',
                         'generador': 'Sistema'
                         }
                         Response.append(data)
